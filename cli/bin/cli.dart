@@ -1,27 +1,8 @@
-import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
+import 'package:cli/commands/students/students_commands.dart';
 
 void main(List<String> arguments) {
   CommandRunner('dart_cli', 'Comando de exemplo')
-    ..addCommand(CliCommand())
+    ..addCommand(StudentsCommands())
     ..run(arguments);
-}
-
-class CliCommand extends Command {
-  @override
-  String get description => 'Exemplo de comando';
-
-  @override
-  String get name => 'dart_cli';
-
-  CliCommand() {
-    argParser.addFlag('data', abbr: 'd', help: 'Flag de exemplo');
-    argParser.addOption('name', abbr: 'n', help: 'Nome de exemplo');
-    argParser.addOption('template', abbr: 't', help: 'Template de exemplo');
-  }
-
-  @override
-  void run() {
-    print('Comando executado');
-  }
 }
