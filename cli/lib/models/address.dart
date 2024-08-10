@@ -4,11 +4,11 @@ import 'city.dart';
 import 'phone.dart';
 
 class Address {
-  String street;
-  int number;
-  String zipCode;
-  City city;
-  Phone phone;
+  final String street;
+  final int number;
+  final String zipCode;
+  final City city;
+  final Phone phone;
 
   Address({
     required this.street,
@@ -35,8 +35,8 @@ class Address {
       street: map['street'] ?? '',
       number: map['number'] ?? 0,
       zipCode: map['zipCode'] ?? '',
-      city: City.fromMap(map['city'] ?? {}),
-      phone: Phone.fromMap(map['phone'] ?? {}),
+      city: City.fromMap(map['city'] ?? <String, dynamic>{}),
+      phone: Phone.fromMap(map['phone'] ?? <String, dynamic>{}),
     );
   }
 

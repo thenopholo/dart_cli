@@ -2,34 +2,39 @@ import 'dart:convert';
 
 import 'address.dart';
 import 'courses.dart';
-import 'name_courses.dart';
 
 class Student {
-  int id;
-  String name;
-  int age;
-  NameCourses nameCourses;
-  Courses courses;
-  Address address;
+  final int? id;
+  final String name;
+  final int? age;
+  final List<String> nameCourses;
+  final List<Courses> courses;
+  final Address address;
 
   Student({
-    required this.id,
+    this.id,
     required this.name,
-    required this.age,
+    this.age,
     required this.nameCourses,
     required this.courses,
     required this.address,
   });
 
   Map<String, dynamic> toMap() {
-    return {
+    final map = {
       'id': id,
       'name': name,
       'age': age,
-      'nameCourses': nameCourses.toMap(),
-      'courses': courses.toMap(),
+      'nameCourses': nameCourses,
+      'courses': courses.map((courses) => courses.toMap()).toList(),
       'address': address.toMap(),
     };
+
+    if (age != null) {
+      map['age'] = age;
+    }
+
+    return map;
   }
 
   String toJSON() => jsonEncode(toMap());
@@ -38,10 +43,13 @@ class Student {
     return Student(
       id: map['id'] ?? 0,
       name: map['name'] ?? '',
-      age: map['age'] ?? 0,
-      nameCourses: NameCourses.fromMap(map['nameCourses'] ?? {}),
-      courses: Courses.fromMap(map['courses'] ?? {}),
+      age: map['age'],
+      nameCourses: List<String>.from((map['nameCourses'] ?? <String>[])),
       address: Address.fromMap(map['address'] ?? {}),
+      courses: map['courses']
+              ?.map<Courses>((coursesMap) => Courses.fromMap(coursesMap))
+              .toList() ??
+          <Courses>[],
     );
   }
 

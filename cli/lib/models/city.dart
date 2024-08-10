@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class City {
-  int id;
-  String name;
+  final int id;
+  final String name;
 
   City({
     required this.id,
