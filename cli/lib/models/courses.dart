@@ -3,7 +3,7 @@ import 'dart:convert';
 class Courses {
   final int id;
   final String name;
-  final bool isStudent;
+  bool isStudent;
 
   Courses({
     required this.id,
