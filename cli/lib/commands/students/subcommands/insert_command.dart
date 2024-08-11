@@ -28,7 +28,7 @@ class InsertCommand extends Command {
   Future<void> run() async {
     print('Aguarde...');
     final filePath = argResults?['file'];
-    final students = File(filePath!).readAsLinesSync();
+    final students = File(filePath).readAsLinesSync();
     print('----------------------------------------------');
 
     for (var student in students) {
@@ -60,8 +60,6 @@ class InsertCommand extends Command {
       );
 
       await studentRepository.insert(studentModel);
-      print('----------------------------------------------');
-      print('Alunos inseridos com sucesso');
     }
 
     print('----------------------------------------------');
