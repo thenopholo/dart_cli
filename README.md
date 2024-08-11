@@ -15,7 +15,7 @@ Este repositório contém um projeto de estudo focado na criação de uma ferram
   
   ✅ Tratamento de entradas e saídas de usuário.
   
-  ✅ Uso de pacotes do Dart para CLI, como args e io.
+  ✅ Uso de pacotes do Dart para CLI, como args, io e http.
 
 # Como usar
 
